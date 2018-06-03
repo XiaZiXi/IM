@@ -1,0 +1,48 @@
+#include "onehuman.h"
+#include <QHBoxLayout>
+#include "chat.h"
+
+Human::Human(QToolButton *parent) : QToolButton(parent)
+{
+    setupUI();
+    setupActions();
+}
+Human::~Human()
+{}
+void Human::setupUI()
+{
+   nickNameIcon = new QLabel;
+   nickNameIcon->setPixmap
+           (QPixmap(":/default_human.png").
+            scaled(QSize(36,36),
+                   Qt::IgnoreAspectRatio,
+                   Qt::SmoothTransformation));   //默认的头像图标
+   nickNameLabel = new QLabel("未知");            //默认的昵称
+   nickNameLabel->setFixedSize(200,24);
+   nickNameLabel->setAlignment(Qt::AlignLeft);
+   nickNameLabel->setFont(QFont("汉仪南宫体简",12));
+   this->setFixedSize(258,56);
+   this->setAutoRaise(true);
+
+   QHBoxLayout *layout = new QHBoxLayout(this);
+   layout->addWidget(nickNameIcon);
+   layout->addWidget(nickNameLabel);
+}
+
+
+void Human::mouseDoubleClickEvent(QMouseEvent *)
+{
+//弹出一个聊天框，和对方聊天
+    //这里不足之处有 1不能弹出模式对话框，也就是说只要我单击了鼠标两次，那么就会弹出一个对话框
+    //             2关闭了this(当前窗口),但是弹出的对话框却不能跟随着关闭
+    Chat *chat = new Chat;
+    //建立了聊天框之前，应该判断是否是登录好了，如果是离线状态的话，应当禁止发送消息
+    chat->show();
+
+    //接下来就是操作数据库来更新个人信息了
+}
+
+void Human::setupActions()
+{
+}
+

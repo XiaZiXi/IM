@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Server.jpg</file>
+        <file>images/setServer.jpg</file>
+        <file>images/sendSysMsg.jpg</file>
+        <file>images/exit.png</file>
+        <file>images/hide.png</file>
+        <file>images/set.png</file>
+        <file>images/sys.png</file>
+    </qresource>
+</RCC>
